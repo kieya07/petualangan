@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mari Belajar Mengenal Makanan dan Minuman Halal dan Haram </title>
+<title>HALAL QUEST - Makanan dan Minuman Halal Haram</title>
 
 <style>
 :root {
@@ -13,7 +12,6 @@
   --orange: #ffad60;
   --yellow: #ffe58f;
   --cream: #fffaf0;
-  --white: #ffffff;
   --green: #6cbd91;
   --red: #ef7777;
 }
@@ -43,7 +41,6 @@ header h1 {
 }
 
 header p {
-  margin-bottom: 0;
   line-height: 1.6;
 }
 
@@ -77,8 +74,13 @@ nav a:hover {
 }
 
 section {
+  display: none;
   padding: 55px 7%;
   scroll-margin-top: 90px;
+}
+
+section#beranda {
+  display: block;
 }
 
 section:nth-of-type(even) {
@@ -92,7 +94,6 @@ section:nth-of-type(even) {
 
 .section-title h2 {
   font-size: clamp(24px, 4vw, 34px);
-  margin-bottom: 10px;
 }
 
 .section-title p {
@@ -112,7 +113,6 @@ section:nth-of-type(even) {
 
 .hero h2 {
   font-size: clamp(28px, 5vw, 45px);
-  margin: 15px 0;
 }
 
 .hero p {
@@ -336,6 +336,47 @@ footer {
   line-height: 1.7;
 }
 
+/* Animasi gambar jawaban benar */
+.correct-answer-picture {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 76px;
+  margin: 12px auto 4px;
+  padding: 12px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 8px #b9efcc;
+  animation:
+    correctBounce 0.75s ease-in-out 2,
+    correctGlow 1.3s ease-in-out infinite alternate;
+}
+
+@keyframes correctBounce {
+  0%, 100% {
+    transform: scale(1) rotate(0);
+  }
+
+  35% {
+    transform: scale(1.25) rotate(-8deg);
+  }
+
+  70% {
+    transform: scale(1.12) rotate(8deg);
+  }
+}
+
+@keyframes correctGlow {
+  from {
+    box-shadow: 0 0 0 5px #b9efcc;
+  }
+
+  to {
+    box-shadow: 0 0 0 12px #d7f8e3;
+  }
+}
+
+/* Confetti */
 .confetti {
   position: fixed;
   top: -20px;
@@ -346,9 +387,21 @@ footer {
   animation: fall 2.5s linear forwards;
 }
 
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @keyframes appear {
@@ -356,16 +409,10 @@ footer {
     opacity: 0;
     transform: scale(0.92);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
-  }
-}
-
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(720deg);
-    opacity: 0;
   }
 }
 
@@ -398,26 +445,26 @@ footer {
 <body>
 
 <header>
-  <h1>🌙 MARI BELJAR BERSAMA</h1>
+  <h1>🌙 MARI BELAJAR BERSAMA</h1>
   <p>Petualangan Seru Mengenal Makanan dan Minuman Halal dan Haram</p>
 </header>
 
 <nav>
   <a href="#beranda">Beranda</a>
-  <a href="#tujuan">🎯Tujuan</a>
-  <a href="#materi">📚Materi</a>
-  <a href="#videoajar">🎬Video Ajar</a>
-  <a href="#menyanyi">🎤Ayo Menyanyi</a>
-  <a href="#tebakgambar">🧩Tebak Gambar</a>
-  <a href="#petualangan">🗺️Petualangan</a>
-  <a href="#pemecahan">🧩Pemecahan Masalah</a>
-  <a href="#skor">Skor</a>
+  <a href="#tujuan">🎯 Tujuan</a>
+  <a href="#materi">📚 Materi</a>
+  <a href="#videoajar">🎬 Video Ajar</a>
+  <a href="#menyanyi">🎤 Ayo Menyanyi</a>
+  <a href="#tebakgambar">🧩 Tebak Gambar</a>
+  <a href="#petualangan">🗺️ Petualangan</a>
+  <a href="#pemecahan">🧩 Pemecahan Masalah</a>
+  <a href="#skor">🏆 Skor</a>
 </nav>
 
 <!-- BERANDA -->
 <section id="beranda" class="hero">
   <div class="emoji">🍎🥛🍯</div>
-  <h2>Yuk, Jadi Penjelajah Halal! dan haram</h2>
+  <h2>Yuk, Jadi Penjelajah Halal!</h2>
 
   <p>
     Ayo belajar mengenal makanan dan minuman halal serta haram.
@@ -435,26 +482,34 @@ footer {
 <section id="tujuan">
   <div class="section-title">
     <h2>🎯 Tujuan Pembelajaran</h2>
-    <p>Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:</p>
+    <p>
+      Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:
+    </p>
   </div>
 
   <div class="grid">
     <div class="card">
       <span class="emoji">📖</span>
       <h3>Memahami Pengertian</h3>
-      <p>Menjelaskan pengertian makanan dan minuman halal serta haram.</p>
+      <p>
+        Menjelaskan pengertian makanan dan minuman halal serta haram.
+      </p>
     </div>
 
     <div class="card">
       <span class="emoji">🔍</span>
       <h3>Mengidentifikasi</h3>
-      <p>Membedakan contoh makanan dan minuman halal serta haram.</p>
+      <p>
+        Membedakan contoh makanan dan minuman halal serta haram.
+      </p>
     </div>
 
     <div class="card">
       <span class="emoji">🤲</span>
       <h3>Menerapkan</h3>
-      <p>Membiasakan diri memilih makanan dan minuman yang halal dan baik.</p>
+      <p>
+        Membiasakan diri memilih makanan dan minuman yang halal dan baik.
+      </p>
     </div>
   </div>
 </section>
@@ -463,9 +518,7 @@ footer {
 <section id="materi">
   <div class="section-title">
     <h2>📚 Materi Pembelajaran</h2>
-    <p>
-      Klik salah satu kartu materi untuk membuka penjelasannya.
-    </p>
+    <p>Klik salah satu kartu materi untuk membuka penjelasannya.</p>
   </div>
 
   <div class="grid">
@@ -514,9 +567,9 @@ footer {
 
   <div id="materialDetail" class="material-detail">
     <h3 id="materialTitle">Pilih materi terlebih dahulu</h3>
-    <p id="materialText">
+    <div id="materialText">
       Klik salah satu kartu materi di atas untuk membaca penjelasannya.
-    </p>
+    </div>
   </div>
 </section>
 
@@ -644,9 +697,7 @@ footer {
 <section id="petualangan">
   <div class="section-title">
     <h2>🗺️ Petualangan Halal Quest</h2>
-    <p>
-      Selesaikan setiap misi untuk menjadi Penjelajah Halal!
-    </p>
+    <p>Selesaikan setiap misi untuk menjadi Penjelajah Halal!</p>
   </div>
 
   <div class="game-box">
@@ -712,9 +763,7 @@ footer {
 <section id="skor">
   <div class="section-title">
     <h2>🏆 Hasil Petualangan</h2>
-    <p>
-      Lihat skor yang kamu dapatkan dari berbagai tantangan.
-    </p>
+    <p>Lihat skor yang kamu dapatkan dari berbagai tantangan.</p>
   </div>
 
   <div class="game-box">
@@ -1012,20 +1061,40 @@ function answerQuiz(answer) {
     quizScore += 10;
 
     feedback.className = "feedback show correct";
+
     feedback.innerHTML = `
-      🎉 <strong>Benar!</strong><br>
+      🎉 <strong>Benar sekali!</strong><br>
       ${item.explanation}<br>
-      <span style="font-size:35px">${item.image}</span>
+
+      <div class="correct-answer-picture"
+           role="img"
+           aria-label="Gambar ${item.name}">
+        ${item.image}
+      </div>
+
+      <br>
+      <strong>${item.name}</strong>
+      <p>✨ Hebat! Kamu mendapatkan 10 poin!</p>
     `;
 
+    playCorrectSound();
     createConfetti();
+
   } else {
     feedback.className = "feedback show wrong";
+
     feedback.innerHTML = `
       😊 <strong>Belum tepat!</strong><br>
-      Jawaban yang benar adalah <strong>${item.answer}</strong>.<br>
+      Jawaban yang benar adalah
+      <strong>${item.answer}</strong>.<br>
+
       ${item.explanation}<br>
-      <span style="font-size:35px">${item.image}</span>
+
+      <div style="font-size:60px;">
+        ${item.image}
+      </div>
+
+      <strong>${item.name}</strong>
     `;
   }
 
@@ -1048,6 +1117,7 @@ function nextQuiz() {
   if (quizIndex < quizData.length - 1) {
     quizIndex++;
     loadQuiz();
+
   } else {
     document.getElementById("quizQuestion").innerText =
       "🎉 Semua soal telah selesai!";
@@ -1164,6 +1234,7 @@ function answerAdventure(selected) {
       "🎉 Benar! " + item.explanation;
 
     createConfetti();
+
   } else {
     feedback.className = "feedback show wrong";
     feedback.innerHTML =
@@ -1186,6 +1257,7 @@ function nextAdventure() {
   if (adventureIndex < adventureData.length - 1) {
     adventureIndex++;
     loadAdventure();
+
   } else {
     document.getElementById("adventureTitle").innerText =
       "🏆 Semua Misi Selesai!";
@@ -1298,6 +1370,7 @@ function answerProblem(selected) {
       "🌟 Jawaban tepat! " + item.explanation;
 
     createConfetti();
+
   } else {
     feedback.className = "feedback show wrong";
     feedback.innerHTML =
@@ -1320,6 +1393,7 @@ function nextProblem() {
   if (problemIndex < problemData.length - 1) {
     problemIndex++;
     loadProblem();
+
   } else {
     document.getElementById("problemTitle").innerText =
       "🏆 Semua Kasus Selesai!";
@@ -1339,6 +1413,62 @@ function nextProblem() {
       "none";
 
     createConfetti();
+  }
+}
+
+/* =========================
+   SUARA JAWABAN BENAR
+========================= */
+
+function playCorrectSound() {
+  try {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) return;
+
+    const audioContext = new AudioContextClass();
+
+    const notes = [
+      523.25,
+      659.25,
+      783.99,
+      1046.50
+    ];
+
+    notes.forEach((frequency, index) => {
+      const oscillator = audioContext.createOscillator();
+      const gain = audioContext.createGain();
+
+      const startAt =
+        audioContext.currentTime + index * 0.13;
+
+      oscillator.type = "sine";
+      oscillator.frequency.value = frequency;
+
+      gain.gain.setValueAtTime(0.0001, startAt);
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.16,
+        startAt + 0.025
+      );
+
+      gain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        startAt + 0.28
+      );
+
+      oscillator.connect(gain);
+      gain.connect(audioContext.destination);
+
+      oscillator.start(startAt);
+      oscillator.stop(startAt + 0.3);
+    });
+
+    setTimeout(() => audioContext.close(), 800);
+
+  } catch (error) {
+    // Permainan tetap berjalan jika suara tidak didukung perangkat.
   }
 }
 
@@ -1402,18 +1532,71 @@ function resetAllGames() {
   loadAdventure();
   loadProblem();
 
-  document.getElementById("tebakgambar").scrollIntoView({
-    behavior: "smooth"
-  });
+  showSection("tebakgambar");
 }
+
+/* =========================
+   NAVIGASI MENU
+   Hanya satu bagian tampil pada satu waktu.
+========================= */
+
+function showSection(sectionId) {
+  const selectedSection =
+    document.getElementById(sectionId);
+
+  if (!selectedSection) return;
+
+  document.querySelectorAll("body > section").forEach(section => {
+    section.style.display = "none";
+  });
+
+  selectedSection.style.display = "block";
+
+  selectedSection.scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  history.replaceState(null, "", "#" + sectionId);
+}
+
+document.addEventListener("click", function(event) {
+  const link = event.target.closest('a[href^="#"]');
+
+  if (!link) return;
+
+  const sectionId =
+    link.getAttribute("href").slice(1);
+
+  const selectedSection =
+    document.getElementById(sectionId);
+
+  if (!selectedSection ||
+      selectedSection.tagName !== "SECTION") {
+    return;
+  }
+
+  event.preventDefault();
+  showSection(sectionId);
+});
 
 /* =========================
    MULAI WEBSITE
 ========================= */
 
-loadQuiz();
-loadAdventure();
-loadProblem();
+window.addEventListener("DOMContentLoaded", function() {
+  const sectionId = window.location.hash.slice(1);
+
+  if (sectionId && document.getElementById(sectionId)) {
+    showSection(sectionId);
+  } else {
+    showSection("beranda");
+  }
+
+  loadQuiz();
+  loadAdventure();
+  loadProblem();
+});
 </script>
 
 </body>
