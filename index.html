@@ -180,29 +180,74 @@ section:nth-of-type(even) {
   line-height: 1.7;
 }
 
+/* =========================
+   MATERI INTERAKTIF
+   Efek kartu dan materi membesar
+========================= */
+
 .material-card {
   cursor: pointer;
   border: 2px solid transparent;
+  transition:
+    transform 0.4s ease,
+    border-color 0.4s ease,
+    background 0.4s ease,
+    opacity 0.4s ease;
 }
 
+/* Kartu materi yang dipilih sedikit mengecil */
 .material-card.active {
+  transform: scale(0.92);
   border-color: var(--purple);
   background: #f9f7ff;
+  opacity: 0.85;
 }
 
+/* Kotak penjelasan materi */
 .material-detail {
   display: none;
+  width: 100%;
   background: white;
-  padding: 25px;
-  border-radius: 18px;
-  margin-top: 20px;
+  padding: 30px;
+  border-radius: 22px;
+  margin-top: 25px;
   line-height: 1.8;
-  box-shadow: 0 5px 18px #26345d10;
+  box-shadow: 0 8px 25px #26345d18;
+  transform-origin: top center;
 }
 
+/* Materi muncul dengan efek membesar */
 .material-detail.show {
   display: block;
-  animation: appear 0.4s ease;
+  animation: materialExpand 0.5s ease;
+}
+
+/* Judul materi */
+.material-detail h3 {
+  font-size: clamp(24px, 4vw, 34px);
+  color: var(--purple);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* Isi materi */
+.material-detail p,
+.material-detail li {
+  font-size: 17px;
+  line-height: 1.9;
+}
+
+/* Animasi membesar */
+@keyframes materialExpand {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .video-container {
@@ -461,6 +506,15 @@ footer {
 
   .question-image {
     font-size: 75px;
+  }
+
+  .material-detail {
+    padding: 22px;
+  }
+
+  .material-detail p,
+  .material-detail li {
+    font-size: 16px;
   }
 }
 </style>
@@ -908,27 +962,36 @@ const materials = [
   }
 ];
 
+/* Fungsi membuka materi dengan animasi membesar */
 function showMaterial(index) {
   const detail = document.getElementById("materialDetail");
 
+  // Mengubah judul materi
   document.getElementById("materialTitle").innerText =
     materials[index].title;
 
+  // Mengubah isi materi
   document.getElementById("materialText").innerHTML =
     materials[index].text;
 
+  // Menghapus class agar animasi dapat diputar kembali
+  detail.classList.remove("show");
+
+  // Memulai ulang animasi
+  void detail.offsetWidth;
+
+  // Menampilkan materi dengan efek membesar
   detail.classList.add("show");
 
-  document.querySelectorAll(".material-card").forEach(card => {
-    card.classList.remove("active");
+  // Memberi tanda pada kartu yang dipilih
+  document.querySelectorAll(".material-card").forEach((card, i) => {
+    card.classList.toggle("active", i === index);
   });
 
-  document.querySelectorAll(".material-card")[index]
-    .classList.add("active");
-
+  // Mengarahkan tampilan ke kotak materi
   detail.scrollIntoView({
     behavior: "smooth",
-    block: "nearest"
+    block: "center"
   });
 }
 
