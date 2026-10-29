@@ -1,0 +1,460 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HALAL QUEST - Petualangan Belajar</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  background: #fff8ed;
+  color: #333;
+}
+
+header {
+  text-align: center;
+  padding: 25px 15px;
+  background: linear-gradient(135deg, #ffb347, #ffcc70);
+  color: #53320b;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+header p {
+  margin-bottom: 0;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 15px;
+  background: white;
+  box-shadow: 0 3px 8px #0001;
+}
+
+nav button {
+  border: none;
+  background: #ff9f43;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+nav button:hover {
+  background: #f57c00;
+  transform: translateY(-2px);
+}
+
+main {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+  animation: muncul .5s ease;
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px #0001;
+}
+
+h2 {
+  color: #e67e22;
+}
+
+.ilustrasi {
+  text-align: center;
+  font-size: 85px;
+  padding: 15px;
+  animation: melayang 3s infinite ease-in-out;
+}
+
+@keyframes melayang {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.poin {
+  background: #fff1d6;
+  border-left: 5px solid #ffab40;
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  background: #ff9f43;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btn:hover {
+  background: #e67e22;
+}
+
+.pilihan {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.pilihan button {
+  background: white;
+  border: 3px solid #ffd08a;
+  border-radius: 15px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.pilihan button:hover {
+  background: #fff0d4;
+  transform: scale(1.03);
+}
+
+.feedback {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 15px;
+  border-radius: 15px;
+  margin-top: 15px;
+  display: none;
+}
+
+.benar {
+  background: #d8f8df;
+  color: #167b35;
+}
+
+.salah {
+  background: #ffe0e0;
+  color: #b42323;
+}
+
+#skor {
+  background: #fff1d6;
+  padding: 12px;
+  border-radius: 12px;
+  font-weight: bold;
+  text-align: center;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #ffcc70;
+  margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌟 HALAL QUEST 🌟</h1>
+  <p>Petualangan Seru Mengenal Makanan dan Minuman Halal</p>
+</header>
+
+<nav>
+  <button onclick="bukaHalaman('beranda')">🏠 Beranda</button>
+  <button onclick="bukaHalaman('materi')">📚 Materi</button>
+  <button onclick="bukaHalaman('tebak')">🖼️ Tebak Gambar</button>
+</nav>
+
+<main>
+
+<!-- BERANDA -->
+<section id="beranda" class="page active">
+  <div class="card">
+    <div class="ilustrasi">🕌 🌙 🍎</div>
+    <h2>Selamat Datang di HALAL QUEST!</h2>
+    <p>
+      Hai teman-teman! Yuk, belajar mengenal makanan dan minuman
+      halal serta haram dengan cara yang menyenangkan.
+    </p>
+    <p>
+      Kamu bisa membaca materi, melihat contoh gambar,
+      dan menguji pengetahuan melalui permainan Tebak Gambar.
+    </p>
+    <button class="btn" onclick="bukaHalaman('materi')">
+      Mulai Belajar 🚀
+    </button>
+  </div>
+</section>
+
+<!-- MATERI INTERAKTIF -->
+<section id="materi" class="page">
+  <div class="card">
+    <h2>📚 Materi Pembelajaran</h2>
+    <p>
+      Makanan halal adalah makanan yang diperbolehkan untuk
+      dikonsumsi menurut syariat Islam.
+    </p>
+
+    <div class="ilustrasi">🍎 🥛 🐟</div>
+
+    <div class="poin">
+      <h3>🍎 1. Pengertian Makanan Halal</h3>
+      Makanan halal adalah makanan yang diperbolehkan oleh Allah
+      untuk dimakan, baik dari jenisnya maupun cara memperolehnya.
+    </div>
+
+    <div class="poin">
+      <h3>🚫 2. Pengertian Makanan Haram</h3>
+      Makanan haram adalah makanan yang dilarang untuk dikonsumsi
+      menurut ketentuan syariat Islam.
+    </div>
+
+    <div class="poin">
+      <h3>🐄 3. Contoh Makanan Halal</h3>
+      <p>Contohnya:</p>
+      <ul>
+        <li>Nasi dan sayuran</li>
+        <li>Buah-buahan</li>
+        <li>Ikan</li>
+        <li>Daging ayam yang disembelih sesuai syariat</li>
+      </ul>
+      <div class="ilustrasi">🍚 🍌 🐟 🐔</div>
+    </div>
+
+    <div class="poin">
+      <h3>🐷 4. Contoh Makanan Haram</h3>
+      <p>Contohnya:</p>
+      <ul>
+        <li>Daging babi</li>
+        <li>Bangkai</li>
+        <li>Darah</li>
+        <li>Hewan yang disembelih bukan atas nama Allah</li>
+      </ul>
+      <div class="ilustrasi">🚫 🐷</div>
+    </div>
+
+    <div class="poin">
+      <h3>🥤 5. Minuman Halal dan Haram</h3>
+      <p>
+        Air putih, susu, dan jus buah termasuk minuman halal
+        selama tidak tercampur bahan haram atau membahayakan.
+      </p>
+      <p>
+        Minuman yang memabukkan, seperti khamr, hukumnya haram.
+      </p>
+      <div class="ilustrasi">💧 🥛 🍹</div>
+    </div>
+
+    <button class="btn" onclick="bukaHalaman('tebak')">
+      Lanjut ke Tebak Gambar 🎮
+    </button>
+  </div>
+</section>
+
+<!-- TEBAK GAMBAR -->
+<section id="tebak" class="page">
+  <div class="card">
+    <h2>🖼️ Tebak Gambar Halal atau Haram</h2>
+    <p>
+      Perhatikan gambar berikut. Pilih jawaban yang menurutmu benar!
+    </p>
+
+    <div id="skor">⭐ Skor: 0</div>
+
+    <div class="ilustrasi" id="gambarSoal">🍎</div>
+
+    <h3 id="pertanyaan" style="text-align:center">
+      Apakah makanan ini halal atau haram?
+    </h3>
+
+    <div class="pilihan">
+      <button onclick="jawab('Halal')">✅ HALAL</button>
+      <button onclick="jawab('Haram')">🚫 HARAM</button>
+    </div>
+
+    <div id="feedback" class="feedback"></div>
+
+    <div style="text-align:center;margin-top:20px">
+      <button class="btn" id="lanjut" onclick="soalBerikutnya()"
+        style="display:none">
+        Soal Berikutnya ➜
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p>🌟 HALAL QUEST — Belajar PAI Jadi Menyenangkan 🌟</p>
+</footer>
+
+<script>
+function bukaHalaman(id) {
+  document.querySelectorAll(".page").forEach(function(halaman) {
+    halaman.classList.remove("active");
+  });
+
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+const soal = [
+  {
+    gambar: "🍎",
+    pertanyaan: "Apakah buah apel termasuk makanan halal?",
+    jawaban: "Halal",
+    penjelasan: "Benar! Buah apel termasuk makanan halal."
+  },
+  {
+    gambar: "🐷",
+    pertanyaan: "Apakah daging babi termasuk makanan halal?",
+    jawaban: "Haram",
+    penjelasan: "Benar! Daging babi termasuk makanan yang diharamkan."
+  },
+  {
+    gambar: "🥛",
+    pertanyaan: "Apakah susu yang baik dan tidak tercampur bahan haram termasuk halal?",
+    jawaban: "Halal",
+    penjelasan: "Benar! Susu yang baik dan tidak tercampur bahan haram termasuk halal."
+  },
+  {
+    gambar: "🍷",
+    pertanyaan: "Apakah minuman yang memabukkan termasuk halal?",
+    jawaban: "Haram",
+    penjelasan: "Benar! Minuman yang memabukkan hukumnya haram."
+  },
+  {
+    gambar: "🐟",
+    pertanyaan: "Apakah ikan termasuk makanan halal?",
+    jawaban: "Halal",
+    penjelasan: "Benar! Ikan termasuk makanan halal."
+  },
+  {
+    gambar: "🍖",
+    pertanyaan: "Apakah daging yang berasal dari hewan halal tetapi disembelih tidak sesuai syariat otomatis halal?",
+    jawaban: "Haram",
+    penjelasan: "Benar! Cara penyembelihan juga perlu diperhatikan."
+  }
+];
+
+let nomor = 0;
+let skor = 0;
+let sudahMenjawab = false;
+
+function tampilkanSoal() {
+  if (nomor >= soal.length) {
+    document.getElementById("gambarSoal").textContent = "🏆";
+    document.getElementById("pertanyaan").textContent =
+      "Permainan selesai! Hebat sekali!";
+    document.querySelector(".pilihan").style.display = "none";
+
+    const feedback = document.getElementById("feedback");
+    feedback.style.display = "block";
+    feedback.className = "feedback benar";
+    feedback.innerHTML =
+      "🎉 Skor akhir kamu: " + skor + " dari " + soal.length +
+      "<br>Terus semangat belajar halal dan haram!";
+
+    document.getElementById("lanjut").textContent = "🔄 Ulangi Permainan";
+    document.getElementById("lanjut").style.display = "inline-block";
+    return;
+  }
+
+  document.getElementById("gambarSoal").textContent = soal[nomor].gambar;
+  document.getElementById("pertanyaan").textContent = soal[nomor].pertanyaan;
+  document.getElementById("skor").textContent = "⭐ Skor: " + skor;
+
+  document.getElementById("feedback").style.display = "none";
+  document.getElementById("lanjut").style.display = "none";
+  document.querySelector(".pilihan").style.display = "grid";
+
+  sudahMenjawab = false;
+}
+
+function jawab(pilihan) {
+  if (sudahMenjawab || nomor >= soal.length) return;
+
+  sudahMenjawab = true;
+
+  const data = soal[nomor];
+  const feedback = document.getElementById("feedback");
+
+  feedback.style.display = "block";
+
+  if (pilihan === data.jawaban) {
+    skor++;
+    feedback.className = "feedback benar";
+    feedback.innerHTML =
+      "✅ BENAR! 🎉<br>" + data.penjelasan +
+      "<br><span style='font-size:35px'>🌟</span>";
+  } else {
+    feedback.className = "feedback salah";
+    feedback.innerHTML =
+      "❌ SALAH!<br>Jawaban yang benar adalah: <b>" +
+      data.jawaban + "</b><br>" +
+      data.penjelasan +
+      "<br><span style='font-size:35px'>💡</span>";
+  }
+
+  document.getElementById("skor").textContent = "⭐ Skor: " + skor;
+  document.getElementById("lanjut").style.display = "inline-block";
+}
+
+function soalBerikutnya() {
+  if (nomor >= soal.length) {
+    nomor = 0;
+    skor = 0;
+    document.querySelector(".pilihan").style.display = "grid";
+    document.getElementById("lanjut").textContent = "Soal Berikutnya ➜";
+  } else {
+    nomor++;
+  }
+
+  tampilkanSoal();
+}
+
+tampilkanSoal();
+</script>
+
+</body>
+</html>
