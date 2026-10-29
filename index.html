@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mari Belajar mengenal - Makanan dan Minuman Halal Haram</title>
+<title>Mari Belajar Mengenal Makanan dan Minuman Halal dan Haram </title>
 
 <style>
 :root {
@@ -12,6 +13,7 @@
   --orange: #ffad60;
   --yellow: #ffe58f;
   --cream: #fffaf0;
+  --white: #ffffff;
   --green: #6cbd91;
   --red: #ef7777;
 }
@@ -41,6 +43,7 @@ header h1 {
 }
 
 header p {
+  margin-bottom: 0;
   line-height: 1.6;
 }
 
@@ -74,13 +77,8 @@ nav a:hover {
 }
 
 section {
-  display: none;
   padding: 55px 7%;
   scroll-margin-top: 90px;
-}
-
-section#beranda {
-  display: block;
 }
 
 section:nth-of-type(even) {
@@ -94,6 +92,7 @@ section:nth-of-type(even) {
 
 .section-title h2 {
   font-size: clamp(24px, 4vw, 34px);
+  margin-bottom: 10px;
 }
 
 .section-title p {
@@ -113,6 +112,7 @@ section:nth-of-type(even) {
 
 .hero h2 {
   font-size: clamp(28px, 5vw, 45px);
+  margin: 15px 0;
 }
 
 .hero p {
@@ -336,47 +336,6 @@ footer {
   line-height: 1.7;
 }
 
-/* Animasi gambar jawaban benar */
-.correct-answer-picture {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 76px;
-  margin: 12px auto 4px;
-  padding: 12px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 0 8px #b9efcc;
-  animation:
-    correctBounce 0.75s ease-in-out 2,
-    correctGlow 1.3s ease-in-out infinite alternate;
-}
-
-@keyframes correctBounce {
-  0%, 100% {
-    transform: scale(1) rotate(0);
-  }
-
-  35% {
-    transform: scale(1.25) rotate(-8deg);
-  }
-
-  70% {
-    transform: scale(1.12) rotate(8deg);
-  }
-}
-
-@keyframes correctGlow {
-  from {
-    box-shadow: 0 0 0 5px #b9efcc;
-  }
-
-  to {
-    box-shadow: 0 0 0 12px #d7f8e3;
-  }
-}
-
-/* Confetti */
 .confetti {
   position: fixed;
   top: -20px;
@@ -387,21 +346,9 @@ footer {
   animation: fall 2.5s linear forwards;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes appear {
@@ -409,10 +356,16 @@ footer {
     opacity: 0;
     transform: scale(0.92);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
   }
 }
 
@@ -439,32 +392,49 @@ footer {
     font-size: 75px;
   }
 }
+
+/* Materi interaktif: kartu mengecil saat dipilih, panel materi tampil besar */
+.material-card { cursor:pointer; transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
+.material-card.active { transform: scale(.88) rotate(-1deg); opacity:.72; box-shadow:0 5px 14px #26345d18; }
+.material-detail { display:none; position:relative; margin:28px auto 0; max-width:1050px; min-height:300px; padding:clamp(20px,4vw,38px); border-radius:28px; background:linear-gradient(135deg,#fff 0%,#fff4dd 55%,#f1efff 100%); box-shadow:0 18px 45px #26345d20; border:2px solid #ffffff; overflow:hidden; gap:28px; align-items:center; }
+.material-detail.show { display:flex; animation:materialReveal .55s cubic-bezier(.2,.8,.2,1) both; }
+.material-detail-art { flex:0 0 34%; min-width:180px; }
+.material-detail-art img { width:100%; max-height:300px; object-fit:cover; border-radius:22px; display:block; box-shadow:0 12px 28px #26345d20; animation:materialFloat 3s ease-in-out infinite; }
+.material-detail-copy { flex:1; animation:materialTextIn .55s ease both; }
+.material-detail-copy h3 { font-size:clamp(24px,3vw,34px); margin:10px 0 16px; }
+.material-detail-copy p,.material-detail-copy li { line-height:1.8; font-size:16px; }
+.material-kicker { display:inline-block; background:#ffe58f; padding:7px 13px; border-radius:30px; font-weight:bold; }
+.material-close { position:absolute; right:14px; top:14px; z-index:2; width:38px; height:38px; border:0; border-radius:50%; background:#26345d; color:white; cursor:pointer; font-size:18px; transition:transform .2s; }
+.material-close:hover { transform:rotate(90deg) scale(1.08); }
+@keyframes materialReveal { from { opacity:0; transform:translateY(24px) scale(.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes materialTextIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:translateX(0); } }
+@keyframes materialFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+@media(max-width:700px) { .material-detail.show { flex-direction:column; align-items:stretch; } .material-detail-art { min-width:0; width:100%; } .material-detail-art img { max-height:230px; } .material-card.active { transform:scale(.94); } }
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🌙 MARI BELAJAR BERSAMA</h1>
+  <h1>🌙 MARI BELJAR BERSAMA</h1>
   <p>Petualangan Seru Mengenal Makanan dan Minuman Halal dan Haram</p>
 </header>
 
 <nav>
   <a href="#beranda">Beranda</a>
-  <a href="#tujuan">🎯 Tujuan</a>
-  <a href="#materi">📚 Materi</a>
-  <a href="#videoajar">🎬 Video Ajar</a>
-  <a href="#menyanyi">🎤 Ayo Menyanyi</a>
-  <a href="#tebakgambar">🧩 Tebak Gambar</a>
-  <a href="#petualangan">🗺️ Petualangan</a>
-  <a href="#pemecahan">🧩 Pemecahan Masalah</a>
-  <a href="#skor">🏆 Skor</a>
+  <a href="#tujuan">🎯Tujuan</a>
+  <a href="#materi">📚Materi</a>
+  <a href="#videoajar">🎬Video Ajar</a>
+  <a href="#menyanyi">🎤Ayo Menyanyi</a>
+  <a href="#tebakgambar">🧩Tebak Gambar</a>
+  <a href="#pemecahan">🧩Pemecahan Masalah</a>
 </nav>
 
 <!-- BERANDA -->
 <section id="beranda" class="hero">
   <div class="emoji">🍎🥛🍯</div>
-  <h2>Yuk, Jadi Penjelajah Halal dan haram!</h2>
+  <h2>Yuk, Jadi Penjelajah Halal! dan haram</h2>
 
   <p>
     Ayo belajar mengenal makanan dan minuman halal serta haram.
@@ -482,34 +452,26 @@ footer {
 <section id="tujuan">
   <div class="section-title">
     <h2>🎯 Tujuan Pembelajaran</h2>
-    <p>
-      Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:
-    </p>
+    <p>Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:</p>
   </div>
 
   <div class="grid">
     <div class="card">
       <span class="emoji">📖</span>
       <h3>Memahami Pengertian</h3>
-      <p>
-        Menjelaskan pengertian makanan dan minuman halal serta haram.
-      </p>
+      <p>Menjelaskan pengertian makanan dan minuman halal serta haram.</p>
     </div>
 
     <div class="card">
       <span class="emoji">🔍</span>
       <h3>Mengidentifikasi</h3>
-      <p>
-        Membedakan contoh makanan dan minuman halal serta haram.
-      </p>
+      <p>Membedakan contoh makanan dan minuman halal serta haram.</p>
     </div>
 
     <div class="card">
       <span class="emoji">🤲</span>
       <h3>Menerapkan</h3>
-      <p>
-        Membiasakan diri memilih makanan dan minuman yang halal dan baik.
-      </p>
+      <p>Membiasakan diri memilih makanan dan minuman yang halal dan baik.</p>
     </div>
   </div>
 </section>
@@ -518,7 +480,9 @@ footer {
 <section id="materi">
   <div class="section-title">
     <h2>📚 Materi Pembelajaran</h2>
-    <p>Klik salah satu kartu materi untuk membuka penjelasannya.</p>
+    <p>
+      Klik salah satu kartu materi untuk membuka penjelasannya.
+    </p>
   </div>
 
   <div class="grid">
@@ -566,9 +530,12 @@ footer {
   </div>
 
   <div id="materialDetail" class="material-detail">
-    <h3 id="materialTitle">Pilih materi terlebih dahulu</h3>
-    <div id="materialText">
-      Klik salah satu kartu materi di atas untuk membaca penjelasannya.
+    <button class="material-close" type="button" onclick="closeMaterial()" aria-label="Tutup materi">✕</button>
+    <div class="material-detail-art"><img id="materialImage" src="" alt="Ilustrasi materi"></div>
+    <div class="material-detail-copy">
+      <span class="material-kicker">✨ Yuk, pelajari bersama</span>
+      <h3 id="materialTitle">Pilih materi terlebih dahulu</h3>
+      <div id="materialText">Klik salah satu kartu materi di atas untuk membaca penjelasannya.</div>
     </div>
   </div>
 </section>
@@ -693,37 +660,6 @@ footer {
   </div>
 </section>
 
-<!-- PETUALANGAN -->
-<section id="petualangan">
-  <div class="section-title">
-    <h2>🗺️ Petualangan Halal Quest</h2>
-    <p>Selesaikan setiap misi untuk menjadi Penjelajah Halal!</p>
-  </div>
-
-  <div class="game-box">
-    <div class="question-image">🧭</div>
-
-    <h3 id="adventureTitle">Misi 1: Pilih Makanan</h3>
-
-    <p id="adventureQuestion">
-      Kamu sedang memilih makanan di kantin.
-      Makanan apa yang sebaiknya kamu pilih?
-    </p>
-
-    <div id="adventureOptions" class="problem-options"></div>
-
-    <div id="adventureFeedback" class="feedback"></div>
-
-    <button
-      id="nextAdventureBtn"
-      class="btn"
-      onclick="nextAdventure()"
-      style="display:none">
-      Lanjut Misi ➜
-    </button>
-  </div>
-</section>
-
 <!-- PEMECAHAN MASALAH -->
 <section id="pemecahan">
   <div class="section-title">
@@ -759,43 +695,6 @@ footer {
   </div>
 </section>
 
-<!-- SKOR -->
-<section id="skor">
-  <div class="section-title">
-    <h2>🏆 Hasil Petualangan</h2>
-    <p>Lihat skor yang kamu dapatkan dari berbagai tantangan.</p>
-  </div>
-
-  <div class="game-box">
-    <div class="question-image">🏅</div>
-
-    <h3>Hebat, Penjelajah Halal!</h3>
-
-    <p>
-      Terus belajar agar semakin memahami makanan dan minuman
-      halal serta haram.
-    </p>
-
-    <div class="score-box">
-      Skor Tebak Gambar: <span id="finalQuizScore">0</span>
-    </div>
-
-    <div class="score-box">
-      Skor Petualangan: <span id="finalAdventureScore">0</span>
-    </div>
-
-    <div class="score-box">
-      Skor Pemecahan Masalah: <span id="finalProblemScore">0</span>
-    </div>
-
-    <br>
-
-    <button class="btn orange" onclick="resetAllGames()">
-      🔄 Ulangi Permainan
-    </button>
-  </div>
-</section>
-
 <footer>
   <h3>🌙 MAKANAN DAN MINUMAN HALAL DAN HARAM</h3>
   <p>
@@ -813,6 +712,7 @@ footer {
 const materials = [
   {
     title: "Pengertian Halal",
+    image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Halal adalah segala sesuatu yang diperbolehkan oleh
@@ -830,6 +730,7 @@ const materials = [
   },
   {
     title: "Pengertian Haram",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Haram adalah segala sesuatu yang dilarang oleh
@@ -848,6 +749,7 @@ const materials = [
   },
   {
     title: "Makanan Halal",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh makanan halal antara lain:</p>
       <ul>
@@ -865,6 +767,7 @@ const materials = [
   },
   {
     title: "Makanan Haram",
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh makanan yang diharamkan antara lain:</p>
       <ul>
@@ -881,6 +784,7 @@ const materials = [
   },
   {
     title: "Minuman Halal",
+    image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh minuman halal antara lain:</p>
       <ul>
@@ -899,6 +803,7 @@ const materials = [
   },
   {
     title: "Minuman Haram",
+    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Minuman yang memabukkan atau mengandung bahan
@@ -915,6 +820,7 @@ const materials = [
   },
   {
     title: "Halalan Thayyiban",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Halalan thayyiban berarti halal dan baik.
@@ -937,26 +843,24 @@ const materials = [
 
 function showMaterial(index) {
   const detail = document.getElementById("materialDetail");
-
-  document.getElementById("materialTitle").innerText =
-    materials[index].title;
-
-  document.getElementById("materialText").innerHTML =
-    materials[index].text;
-
+  const item = materials[index];
+  document.getElementById("materialTitle").innerText = item.title;
+  document.getElementById("materialText").innerHTML = item.text;
+  const image = document.getElementById("materialImage");
+  image.src = item.image;
+  image.alt = "Ilustrasi " + item.title;
+  image.onerror = () => { image.style.display = "none"; };
+  image.onload = () => { image.style.display = "block"; };
   detail.classList.add("show");
-
-  document.querySelectorAll(".material-card").forEach(card => {
-    card.classList.remove("active");
+  document.querySelectorAll(".material-card").forEach((card, i) => {
+    card.classList.toggle("active", i === index);
   });
+  detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
 
-  document.querySelectorAll(".material-card")[index]
-    .classList.add("active");
-
-  detail.scrollIntoView({
-    behavior: "smooth",
-    block: "nearest"
-  });
+function closeMaterial() {
+  document.getElementById("materialDetail").classList.remove("show");
+  document.querySelectorAll(".material-card").forEach(card => card.classList.remove("active"));
 }
 
 /* =========================
@@ -1061,40 +965,20 @@ function answerQuiz(answer) {
     quizScore += 10;
 
     feedback.className = "feedback show correct";
-
     feedback.innerHTML = `
-      🎉 <strong>Benar sekali!</strong><br>
+      🎉 <strong>Benar!</strong><br>
       ${item.explanation}<br>
-
-      <div class="correct-answer-picture"
-           role="img"
-           aria-label="Gambar ${item.name}">
-        ${item.image}
-      </div>
-
-      <br>
-      <strong>${item.name}</strong>
-      <p>✨ Hebat! Kamu mendapatkan 10 poin!</p>
+      <span style="font-size:35px">${item.image}</span>
     `;
 
-    playCorrectSound();
     createConfetti();
-
   } else {
     feedback.className = "feedback show wrong";
-
     feedback.innerHTML = `
       😊 <strong>Belum tepat!</strong><br>
-      Jawaban yang benar adalah
-      <strong>${item.answer}</strong>.<br>
-
+      Jawaban yang benar adalah <strong>${item.answer}</strong>.<br>
       ${item.explanation}<br>
-
-      <div style="font-size:60px;">
-        ${item.image}
-      </div>
-
-      <strong>${item.name}</strong>
+      <span style="font-size:35px">${item.image}</span>
     `;
   }
 
@@ -1117,7 +1001,6 @@ function nextQuiz() {
   if (quizIndex < quizData.length - 1) {
     quizIndex++;
     loadQuiz();
-
   } else {
     document.getElementById("quizQuestion").innerText =
       "🎉 Semua soal telah selesai!";
@@ -1147,182 +1030,6 @@ function nextQuiz() {
 /* =========================
    PETUALANGAN
 ========================= */
-
-const adventureData = [
-  {
-    title: "Misi 1: Pilih Makanan",
-    question: "Kamu sedang memilih makanan di kantin. Makanan apa yang sebaiknya kamu pilih?",
-    options: [
-      "Makanan yang halal dan bersih",
-      "Makanan yang tidak diketahui bahannya",
-      "Makanan yang sudah basi"
-    ],
-    answer: 0,
-    explanation: "Pilihlah makanan yang halal, bersih, dan baik untuk tubuh."
-  },
-  {
-    title: "Misi 2: Membaca Kemasan",
-    question: "Kamu membeli makanan kemasan. Apa yang perlu diperhatikan?",
-    options: [
-      "Warna kemasannya saja",
-      "Bahan makanan dan informasi kehalalannya",
-      "Harga yang paling mahal"
-    ],
-    answer: 1,
-    explanation: "Perhatikan bahan, label halal, dan kondisi kemasan."
-  },
-  {
-    title: "Misi 3: Memilih Minuman",
-    question: "Minuman apa yang sebaiknya kamu pilih?",
-    options: [
-      "Minuman yang memabukkan",
-      "Minuman yang tidak jelas kandungannya",
-      "Air putih yang bersih"
-    ],
-    answer: 2,
-    explanation: "Air putih yang bersih merupakan minuman halal dan baik."
-  }
-];
-
-let adventureIndex = 0;
-let adventureScore = 0;
-let adventureAnswered = false;
-
-function loadAdventure() {
-  const item = adventureData[adventureIndex];
-
-  document.getElementById("adventureTitle").innerText =
-    item.title;
-
-  document.getElementById("adventureQuestion").innerText =
-    item.question;
-
-  document.getElementById("adventureFeedback").className =
-    "feedback";
-
-  document.getElementById("nextAdventureBtn").style.display =
-    "none";
-
-  adventureAnswered = false;
-
-  const options = document.getElementById("adventureOptions");
-  options.innerHTML = "";
-
-  item.options.forEach((option, index) => {
-    const button = document.createElement("button");
-
-    button.innerText = option;
-    button.onclick = () => answerAdventure(index);
-
-    options.appendChild(button);
-  });
-}
-
-function answerAdventure(selected) {
-  if (adventureAnswered) return;
-
-  adventureAnswered = true;
-
-  const item = adventureData[adventureIndex];
-  const feedback = document.getElementById("adventureFeedback");
-
-  if (selected === item.answer) {
-    adventureScore += 10;
-
-    feedback.className = "feedback show correct";
-    feedback.innerHTML =
-      "🎉 Benar! " + item.explanation;
-
-    createConfetti();
-
-  } else {
-    feedback.className = "feedback show wrong";
-    feedback.innerHTML =
-      "😊 Belum tepat. " + item.explanation;
-  }
-
-  document.getElementById("finalAdventureScore").innerText =
-    adventureScore;
-
-  document.getElementById("nextAdventureBtn").style.display =
-    "inline-block";
-
-  document.getElementById("nextAdventureBtn").innerText =
-    adventureIndex === adventureData.length - 1
-      ? "Misi Selesai 🏆"
-      : "Lanjut Misi ➜";
-}
-
-function nextAdventure() {
-  if (adventureIndex < adventureData.length - 1) {
-    adventureIndex++;
-    loadAdventure();
-
-  } else {
-    document.getElementById("adventureTitle").innerText =
-      "🏆 Semua Misi Selesai!";
-
-    document.getElementById("adventureQuestion").innerText =
-      "Hebat! Kamu berhasil menyelesaikan semua misi petualangan.";
-
-    document.getElementById("adventureOptions").innerHTML = "";
-
-    document.getElementById("adventureFeedback").className =
-      "feedback show correct";
-
-    document.getElementById("adventureFeedback").innerHTML =
-      "Skor petualangan kamu: " + adventureScore;
-
-    document.getElementById("nextAdventureBtn").style.display =
-      "none";
-
-    createConfetti();
-  }
-}
-
-/* =========================
-   PEMECAHAN MASALAH
-========================= */
-
-const problemData = [
-  {
-    title: "Kasus 1: Makanan Kemasan",
-    question: "Kamu menemukan makanan ringan yang tidak memiliki informasi bahan makanan. Apa yang sebaiknya kamu lakukan?",
-    options: [
-      "Langsung memakannya",
-      "Memeriksa bahan dan mencari informasi kehalalannya",
-      "Membeli karena kemasannya menarik"
-    ],
-    answer: 1,
-    explanation: "Kita perlu memeriksa bahan dan informasi kehalalan sebelum mengonsumsi makanan."
-  },
-  {
-    title: "Kasus 2: Makanan dari Teman",
-    question: "Teman menawarkan makanan, tetapi kamu belum mengetahui bahan makanan tersebut. Apa tindakan yang tepat?",
-    options: [
-      "Menanyakan bahan makanan terlebih dahulu",
-      "Langsung memakannya",
-      "Membuangnya tanpa bertanya"
-    ],
-    answer: 0,
-    explanation: "Bertanya terlebih dahulu membantu kita memastikan makanan yang dikonsumsi."
-  },
-  {
-    title: "Kasus 3: Menemukan Makanan Basi",
-    question: "Kamu menemukan makanan yang sudah berbau tidak sedap. Apa yang sebaiknya dilakukan?",
-    options: [
-      "Tetap memakannya",
-      "Memberikannya kepada teman",
-      "Tidak mengonsumsinya"
-    ],
-    answer: 2,
-    explanation: "Makanan yang sudah basi tidak baik bagi kesehatan dan sebaiknya tidak dikonsumsi."
-  }
-];
-
-let problemIndex = 0;
-let problemScore = 0;
-let problemAnswered = false;
 
 function loadProblem() {
   const item = problemData[problemIndex];
@@ -1370,7 +1077,6 @@ function answerProblem(selected) {
       "🌟 Jawaban tepat! " + item.explanation;
 
     createConfetti();
-
   } else {
     feedback.className = "feedback show wrong";
     feedback.innerHTML =
@@ -1393,7 +1099,6 @@ function nextProblem() {
   if (problemIndex < problemData.length - 1) {
     problemIndex++;
     loadProblem();
-
   } else {
     document.getElementById("problemTitle").innerText =
       "🏆 Semua Kasus Selesai!";
@@ -1413,62 +1118,6 @@ function nextProblem() {
       "none";
 
     createConfetti();
-  }
-}
-
-/* =========================
-   SUARA JAWABAN BENAR
-========================= */
-
-function playCorrectSound() {
-  try {
-    const AudioContextClass =
-      window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContextClass) return;
-
-    const audioContext = new AudioContextClass();
-
-    const notes = [
-      523.25,
-      659.25,
-      783.99,
-      1046.50
-    ];
-
-    notes.forEach((frequency, index) => {
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-
-      const startAt =
-        audioContext.currentTime + index * 0.13;
-
-      oscillator.type = "sine";
-      oscillator.frequency.value = frequency;
-
-      gain.gain.setValueAtTime(0.0001, startAt);
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.16,
-        startAt + 0.025
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        startAt + 0.28
-      );
-
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-
-      oscillator.start(startAt);
-      oscillator.stop(startAt + 0.3);
-    });
-
-    setTimeout(() => audioContext.close(), 800);
-
-  } catch (error) {
-    // Permainan tetap berjalan jika suara tidak didukung perangkat.
   }
 }
 
@@ -1511,92 +1160,13 @@ function createConfetti() {
    ULANGI SEMUA PERMAINAN
 ========================= */
 
-function resetAllGames() {
-  quizIndex = 0;
-  quizScore = 0;
-  quizAnswered = false;
-
-  adventureIndex = 0;
-  adventureScore = 0;
-  adventureAnswered = false;
-
-  problemIndex = 0;
-  problemScore = 0;
-  problemAnswered = false;
-
-  document.getElementById("finalQuizScore").innerText = "0";
-  document.getElementById("finalAdventureScore").innerText = "0";
-  document.getElementById("finalProblemScore").innerText = "0";
-
-  loadQuiz();
-  loadAdventure();
-  loadProblem();
-
-  showSection("tebakgambar");
-}
-
-/* =========================
-   NAVIGASI MENU
-   Hanya satu bagian tampil pada satu waktu.
-========================= */
-
-function showSection(sectionId) {
-  const selectedSection =
-    document.getElementById(sectionId);
-
-  if (!selectedSection) return;
-
-  document.querySelectorAll("body > section").forEach(section => {
-    section.style.display = "none";
-  });
-
-  selectedSection.style.display = "block";
-
-  selectedSection.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-  history.replaceState(null, "", "#" + sectionId);
-}
-
-document.addEventListener("click", function(event) {
-  const link = event.target.closest('a[href^="#"]');
-
-  if (!link) return;
-
-  const sectionId =
-    link.getAttribute("href").slice(1);
-
-  const selectedSection =
-    document.getElementById(sectionId);
-
-  if (!selectedSection ||
-      selectedSection.tagName !== "SECTION") {
-    return;
-  }
-
-  event.preventDefault();
-  showSection(sectionId);
-});
 
 /* =========================
    MULAI WEBSITE
 ========================= */
 
-window.addEventListener("DOMContentLoaded", function() {
-  const sectionId = window.location.hash.slice(1);
-
-  if (sectionId && document.getElementById(sectionId)) {
-    showSection(sectionId);
-  } else {
-    showSection("beranda");
-  }
-
-  loadQuiz();
-  loadAdventure();
-  loadProblem();
-});
+loadQuiz();
+loadProblem();
 </script>
 
 </body>
