@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mari Belajar mengenal - Makanan dan Minuman Halal Haram</title>
+<title>Mari Belajar Mengenal Makanan dan Minuman Halal dan Haram </title>
 
 <style>
 :root {
@@ -12,6 +13,7 @@
   --orange: #ffad60;
   --yellow: #ffe58f;
   --cream: #fffaf0;
+  --white: #ffffff;
   --green: #6cbd91;
   --red: #ef7777;
 }
@@ -41,6 +43,7 @@ header h1 {
 }
 
 header p {
+  margin-bottom: 0;
   line-height: 1.6;
 }
 
@@ -74,7 +77,6 @@ nav a:hover {
 }
 
 section {
-  display: none;
   padding: 55px 7%;
   scroll-margin-top: 90px;
 }
@@ -90,6 +92,7 @@ section:nth-of-type(even) {
 
 .section-title h2 {
   font-size: clamp(24px, 4vw, 34px);
+  margin-bottom: 10px;
 }
 
 .section-title p {
@@ -109,6 +112,7 @@ section:nth-of-type(even) {
 
 .hero h2 {
   font-size: clamp(28px, 5vw, 45px);
+  margin: 15px 0;
 }
 
 .hero p {
@@ -180,74 +184,29 @@ section:nth-of-type(even) {
   line-height: 1.7;
 }
 
-/* =========================
-   MATERI INTERAKTIF
-   Efek kartu dan materi membesar
-========================= */
-
 .material-card {
   cursor: pointer;
   border: 2px solid transparent;
-  transition:
-    transform 0.4s ease,
-    border-color 0.4s ease,
-    background 0.4s ease,
-    opacity 0.4s ease;
 }
 
-/* Kartu materi yang dipilih sedikit mengecil */
 .material-card.active {
-  transform: scale(0.92);
   border-color: var(--purple);
   background: #f9f7ff;
-  opacity: 0.85;
 }
 
-/* Kotak penjelasan materi */
 .material-detail {
   display: none;
-  width: 100%;
   background: white;
-  padding: 30px;
-  border-radius: 22px;
-  margin-top: 25px;
+  padding: 25px;
+  border-radius: 18px;
+  margin-top: 20px;
   line-height: 1.8;
-  box-shadow: 0 8px 25px #26345d18;
-  transform-origin: top center;
+  box-shadow: 0 5px 18px #26345d10;
 }
 
-/* Materi muncul dengan efek membesar */
 .material-detail.show {
   display: block;
-  animation: materialExpand 0.5s ease;
-}
-
-/* Judul materi */
-.material-detail h3 {
-  font-size: clamp(24px, 4vw, 34px);
-  color: var(--purple);
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-/* Isi materi */
-.material-detail p,
-.material-detail li {
-  font-size: 17px;
-  line-height: 1.9;
-}
-
-/* Animasi membesar */
-@keyframes materialExpand {
-  from {
-    opacity: 0;
-    transform: scale(0.85) translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+  animation: appear 0.4s ease;
 }
 
 .video-container {
@@ -377,47 +336,6 @@ footer {
   line-height: 1.7;
 }
 
-/* Animasi gambar jawaban benar */
-.correct-answer-picture {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 76px;
-  margin: 12px auto 4px;
-  padding: 12px;
-  border-radius: 50%;
-  background: white;
-  box-shadow: 0 0 0 8px #b9efcc;
-  animation:
-    correctBounce 0.75s ease-in-out 2,
-    correctGlow 1.3s ease-in-out infinite alternate;
-}
-
-@keyframes correctBounce {
-  0%, 100% {
-    transform: scale(1) rotate(0);
-  }
-
-  35% {
-    transform: scale(1.25) rotate(-8deg);
-  }
-
-  70% {
-    transform: scale(1.12) rotate(8deg);
-  }
-}
-
-@keyframes correctGlow {
-  from {
-    box-shadow: 0 0 0 5px #b9efcc;
-  }
-
-  to {
-    box-shadow: 0 0 0 12px #d7f8e3;
-  }
-}
-
-/* Confetti */
 .confetti {
   position: fixed;
   top: -20px;
@@ -428,21 +346,9 @@ footer {
   animation: fall 2.5s linear forwards;
 }
 
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(720deg);
-    opacity: 0;
-  }
-}
-
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
 
 @keyframes appear {
@@ -450,39 +356,17 @@ footer {
     opacity: 0;
     transform: scale(0.92);
   }
-
   to {
     opacity: 1;
     transform: scale(1);
   }
 }
 
-/* Layar pembuka */
-#startScreen {
-  display: flex;
-  min-height: 75vh;
-  padding: 50px 7%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(135deg, #fff0cc, #f1eaff);
-}
-
-.start-content {
-  max-width: 750px;
-}
-
-.start-emoji {
-  font-size: clamp(60px, 12vw, 100px);
-  animation: float 3s ease-in-out infinite;
-}
-
-#startScreen h2 {
-  font-size: clamp(28px, 5vw, 45px);
-}
-
-#startScreen p {
-  line-height: 1.8;
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
 }
 
 @media (max-width: 600px) {
@@ -507,59 +391,73 @@ footer {
   .question-image {
     font-size: 75px;
   }
-
-  .material-detail {
-    padding: 22px;
-  }
-
-  .material-detail p,
-  .material-detail li {
-    font-size: 16px;
-  }
 }
+
+/* Materi interaktif: kartu mengecil saat dipilih, panel materi tampil besar */
+.material-card { cursor:pointer; transition: transform .35s ease, opacity .35s ease, box-shadow .35s ease; }
+.material-card.active { transform: scale(.88) rotate(-1deg); opacity:.72; box-shadow:0 5px 14px #26345d18; }
+.material-detail { display:none; position:relative; margin:28px auto 0; max-width:1050px; min-height:300px; padding:clamp(20px,4vw,38px); border-radius:28px; background:linear-gradient(135deg,#fff 0%,#fff4dd 55%,#f1efff 100%); box-shadow:0 18px 45px #26345d20; border:2px solid #ffffff; overflow:hidden; gap:28px; align-items:center; }
+.material-detail.show { display:flex; animation:materialReveal .55s cubic-bezier(.2,.8,.2,1) both; }
+.material-detail-art { flex:0 0 34%; min-width:180px; }
+.material-detail-art img { width:100%; max-height:300px; object-fit:cover; border-radius:22px; display:block; box-shadow:0 12px 28px #26345d20; animation:materialFloat 3s ease-in-out infinite; }
+.material-detail-copy { flex:1; animation:materialTextIn .55s ease both; }
+.material-detail-copy h3 { font-size:clamp(24px,3vw,34px); margin:10px 0 16px; }
+.material-detail-copy p,.material-detail-copy li { line-height:1.8; font-size:16px; }
+.material-kicker { display:inline-block; background:#ffe58f; padding:7px 13px; border-radius:30px; font-weight:bold; }
+.material-close { position:absolute; right:14px; top:14px; z-index:2; width:38px; height:38px; border:0; border-radius:50%; background:#26345d; color:white; cursor:pointer; font-size:18px; transition:transform .2s; }
+.material-close:hover { transform:rotate(90deg) scale(1.08); }
+@keyframes materialReveal { from { opacity:0; transform:translateY(24px) scale(.96); } to { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes materialTextIn { from { opacity:0; transform:translateX(18px); } to { opacity:1; transform:translateX(0); } }
+@keyframes materialFloat { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-8px); } }
+@media(max-width:700px) { .material-detail.show { flex-direction:column; align-items:stretch; } .material-detail-art { min-width:0; width:100%; } .material-detail-art img { max-height:230px; } .material-card.active { transform:scale(.94); } }
+
+
+/* Layar pembuka: beranda dan isi media belum ditampilkan sebelum tombol ditekan */
+#startScreen {
+  min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 35px 7%;
+  background: radial-gradient(circle at top, #fff0cc, #f1eaff 65%, #e8e8ff);
+}
+#startScreen .start-emoji { font-size: clamp(60px, 12vw, 100px); animation: float 3s ease-in-out infinite; }
+#startScreen h1 { font-size: clamp(30px, 6vw, 52px); margin: 18px 0 10px; color: var(--navy); }
+#startScreen p { max-width: 650px; line-height: 1.8; font-size: 17px; }
+#startScreen button { border: 0; border-radius: 28px; padding: 15px 30px; margin-top: 18px;
+  color: var(--navy); background: var(--orange); font-size: 18px; font-weight: bold; cursor: pointer;
+  box-shadow: 0 8px 20px #26345d24; transition: transform .2s, box-shadow .2s; }
+#startScreen button:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 12px 25px #26345d30; }
+body:not(.started) > header, body:not(.started) > nav, body:not(.started) > section, body:not(.started) > footer { display: none !important; }
+body.started #startScreen { display: none; }
 </style>
 </head>
 
 <body>
 
+<div id="startScreen">
+  <div class="start-emoji">🍎🥛🍯</div>
+  <h1>HALAL QUEST</h1>
+  <p>Belajar mengenal makanan dan minuman halal serta haram dengan cara yang seru, menyenangkan, dan bermakna.</p>
+  <button type="button" onclick="startLearning()">🚀 Mulai Petualangan</button>
+</div>
+
 <header>
-  <h1>🌙 MARI BELAJAR BERSAMA</h1>
+  <h1>🌙 MARI BELJAR BERSAMA</h1>
   <p>Petualangan Seru Mengenal Makanan dan Minuman Halal dan Haram</p>
 </header>
 
-<!-- LAYAR PEMBUKA -->
-<div id="startScreen">
-  <div class="start-content">
-    <div class="start-emoji">🍎🥛🍯</div>
-
-    <h2>🌙 HALAL QUEST</h2>
-
-    <p>
-      Ayo belajar mengenal makanan dan minuman halal serta haram.
-      Temukan materi menarik, tonton video, bermain tebak gambar,
-      dan selesaikan tantangan pembelajaran!
-    </p>
-
-    <button class="btn orange" onclick="startWebsite()">
-      🚀 Mulai Petualangan
-    </button>
-  </div>
-</div>
-
-<nav id="mainNav" style="display:none">
+<nav>
   <a href="#beranda">Beranda</a>
-  <a href="#tujuan">🎯 Tujuan</a>
-  <a href="#materi">📚 Materi</a>
-  <a href="#videoajar">🎬 Video Ajar</a>
-  <a href="#menyanyi">🎤 Ayo Menyanyi</a>
-  <a href="#tebakgambar">🧩 Tebak Gambar</a>
-  <a href="#pemecahan">🧩 Pemecahan Masalah</a>
+  <a href="#tujuan">🎯Tujuan</a>
+  <a href="#materi">📚Materi</a>
+  <a href="#videoajar">🎬Video Ajar</a>
+  <a href="#menyanyi">🎤Ayo Menyanyi</a>
+  <a href="#tebakgambar">🧩Tebak Gambar</a>
+  <a href="#pemecahan">🧩Pemecahan Masalah</a>
 </nav>
 
 <!-- BERANDA -->
 <section id="beranda" class="hero">
   <div class="emoji">🍎🥛🍯</div>
-  <h2>Yuk, Jadi Penjelajah Halal dan haram!</h2>
+  <h2>Yuk, Jadi Penjelajah Halal! dan haram</h2>
 
   <p>
     Ayo belajar mengenal makanan dan minuman halal serta haram.
@@ -570,41 +468,33 @@ footer {
 
   <br>
 
-  <a href="#materi" class="btn orange">Mulai Belajar</a>
+  <a href="#materi" class="btn orange">Mulai Petualangan</a>
 </section>
 
 <!-- TUJUAN PEMBELAJARAN -->
 <section id="tujuan">
   <div class="section-title">
     <h2>🎯 Tujuan Pembelajaran</h2>
-    <p>
-      Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:
-    </p>
+    <p>Setelah belajar melalui HALAL QUEST, peserta didik diharapkan mampu:</p>
   </div>
 
   <div class="grid">
     <div class="card">
       <span class="emoji">📖</span>
       <h3>Memahami Pengertian</h3>
-      <p>
-        Menjelaskan pengertian makanan dan minuman halal serta haram.
-      </p>
+      <p>Menjelaskan pengertian makanan dan minuman halal serta haram.</p>
     </div>
 
     <div class="card">
       <span class="emoji">🔍</span>
       <h3>Mengidentifikasi</h3>
-      <p>
-        Membedakan contoh makanan dan minuman halal serta haram.
-      </p>
+      <p>Membedakan contoh makanan dan minuman halal serta haram.</p>
     </div>
 
     <div class="card">
       <span class="emoji">🤲</span>
       <h3>Menerapkan</h3>
-      <p>
-        Membiasakan diri memilih makanan dan minuman yang halal dan baik.
-      </p>
+      <p>Membiasakan diri memilih makanan dan minuman yang halal dan baik.</p>
     </div>
   </div>
 </section>
@@ -613,7 +503,9 @@ footer {
 <section id="materi">
   <div class="section-title">
     <h2>📚 Materi Pembelajaran</h2>
-    <p>Klik salah satu kartu materi untuk membuka penjelasannya.</p>
+    <p>
+      Klik salah satu kartu materi untuk membuka penjelasannya.
+    </p>
   </div>
 
   <div class="grid">
@@ -661,9 +553,12 @@ footer {
   </div>
 
   <div id="materialDetail" class="material-detail">
-    <h3 id="materialTitle">Pilih materi terlebih dahulu</h3>
-    <div id="materialText">
-      Klik salah satu kartu materi di atas untuk membaca penjelasannya.
+    <button class="material-close" type="button" onclick="closeMaterial()" aria-label="Tutup materi">✕</button>
+    <div class="material-detail-art"><img id="materialImage" src="" alt="Ilustrasi materi"></div>
+    <div class="material-detail-copy">
+      <span class="material-kicker">✨ Yuk, pelajari bersama</span>
+      <h3 id="materialTitle">Pilih materi terlebih dahulu</h3>
+      <div id="materialText">Klik salah satu kartu materi di atas untuk membaca penjelasannya.</div>
     </div>
   </div>
 </section>
@@ -833,6 +728,13 @@ footer {
 </footer>
 
 <script>
+function startLearning() {
+  document.body.classList.add('started');
+  // Setelah mulai, tampilkan beranda dan arahkan layar ke bagian beranda.
+  const home = document.getElementById('beranda');
+  if (home) home.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
 /* =========================
    MATERI INTERAKTIF
 ========================= */
@@ -840,6 +742,7 @@ footer {
 const materials = [
   {
     title: "Pengertian Halal",
+    image: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Halal adalah segala sesuatu yang diperbolehkan oleh
@@ -857,6 +760,7 @@ const materials = [
   },
   {
     title: "Pengertian Haram",
+    image: "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Haram adalah segala sesuatu yang dilarang oleh
@@ -875,6 +779,7 @@ const materials = [
   },
   {
     title: "Makanan Halal",
+    image: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh makanan halal antara lain:</p>
       <ul>
@@ -892,6 +797,7 @@ const materials = [
   },
   {
     title: "Makanan Haram",
+    image: "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh makanan yang diharamkan antara lain:</p>
       <ul>
@@ -908,6 +814,7 @@ const materials = [
   },
   {
     title: "Minuman Halal",
+    image: "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>Contoh minuman halal antara lain:</p>
       <ul>
@@ -926,6 +833,7 @@ const materials = [
   },
   {
     title: "Minuman Haram",
+    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Minuman yang memabukkan atau mengandung bahan
@@ -942,6 +850,7 @@ const materials = [
   },
   {
     title: "Halalan Thayyiban",
+    image: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=85",
     text: `
       <p>
         Halalan thayyiban berarti halal dan baik.
@@ -962,37 +871,26 @@ const materials = [
   }
 ];
 
-/* Fungsi membuka materi dengan animasi membesar */
 function showMaterial(index) {
   const detail = document.getElementById("materialDetail");
-
-  // Mengubah judul materi
-  document.getElementById("materialTitle").innerText =
-    materials[index].title;
-
-  // Mengubah isi materi
-  document.getElementById("materialText").innerHTML =
-    materials[index].text;
-
-  // Menghapus class agar animasi dapat diputar kembali
-  detail.classList.remove("show");
-
-  // Memulai ulang animasi
-  void detail.offsetWidth;
-
-  // Menampilkan materi dengan efek membesar
+  const item = materials[index];
+  document.getElementById("materialTitle").innerText = item.title;
+  document.getElementById("materialText").innerHTML = item.text;
+  const image = document.getElementById("materialImage");
+  image.src = item.image;
+  image.alt = "Ilustrasi " + item.title;
+  image.onerror = () => { image.style.display = "none"; };
+  image.onload = () => { image.style.display = "block"; };
   detail.classList.add("show");
-
-  // Memberi tanda pada kartu yang dipilih
   document.querySelectorAll(".material-card").forEach((card, i) => {
     card.classList.toggle("active", i === index);
   });
+  detail.scrollIntoView({ behavior: "smooth", block: "nearest" });
+}
 
-  // Mengarahkan tampilan ke kotak materi
-  detail.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
+function closeMaterial() {
+  document.getElementById("materialDetail").classList.remove("show");
+  document.querySelectorAll(".material-card").forEach(card => card.classList.remove("active"));
 }
 
 /* =========================
@@ -1097,44 +995,27 @@ function answerQuiz(answer) {
     quizScore += 10;
 
     feedback.className = "feedback show correct";
-
     feedback.innerHTML = `
-      🎉 <strong>Benar sekali!</strong><br>
+      🎉 <strong>Benar!</strong><br>
       ${item.explanation}<br>
-
-      <div class="correct-answer-picture"
-           role="img"
-           aria-label="Gambar ${item.name}">
-        ${item.image}
-      </div>
-
-      <br>
-      <strong>${item.name}</strong>
-      <p>✨ Hebat! Kamu mendapatkan 10 poin!</p>
+      <span style="font-size:35px">${item.image}</span>
     `;
 
-    playCorrectSound();
     createConfetti();
-
   } else {
     feedback.className = "feedback show wrong";
-
     feedback.innerHTML = `
       😊 <strong>Belum tepat!</strong><br>
-      Jawaban yang benar adalah
-      <strong>${item.answer}</strong>.<br>
-
+      Jawaban yang benar adalah <strong>${item.answer}</strong>.<br>
       ${item.explanation}<br>
-
-      <div style="font-size:60px;">
-        ${item.image}
-      </div>
-
-      <strong>${item.name}</strong>
+      <span style="font-size:35px">${item.image}</span>
     `;
   }
 
   document.getElementById("quizScore").innerText =
+    quizScore;
+
+  document.getElementById("finalQuizScore").innerText =
     quizScore;
 
   document.getElementById("nextQuizBtn").style.display =
@@ -1150,7 +1031,6 @@ function nextQuiz() {
   if (quizIndex < quizData.length - 1) {
     quizIndex++;
     loadQuiz();
-
   } else {
     document.getElementById("quizQuestion").innerText =
       "🎉 Semua soal telah selesai!";
@@ -1170,53 +1050,16 @@ function nextQuiz() {
     document.getElementById("quizProgress").style.width =
       "100%";
 
+    document.getElementById("finalQuizScore").innerText =
+      quizScore;
+
     createConfetti();
   }
 }
 
 /* =========================
-   PEMECAHAN MASALAH
+   PETUALANGAN
 ========================= */
-
-const problemData = [
-  {
-    title: "Kasus 1: Makanan Kemasan",
-    question: "Kamu menemukan makanan ringan yang tidak memiliki informasi bahan makanan. Apa yang sebaiknya kamu lakukan?",
-    options: [
-      "Langsung memakannya",
-      "Memeriksa bahan dan mencari informasi kehalalannya",
-      "Membeli karena kemasannya menarik"
-    ],
-    answer: 1,
-    explanation: "Kita perlu memeriksa bahan dan informasi kehalalan sebelum mengonsumsi makanan."
-  },
-  {
-    title: "Kasus 2: Makanan dari Teman",
-    question: "Teman menawarkan makanan, tetapi kamu belum mengetahui bahan makanan tersebut. Apa tindakan yang tepat?",
-    options: [
-      "Menanyakan bahan makanan terlebih dahulu",
-      "Langsung memakannya",
-      "Membuangnya tanpa bertanya"
-    ],
-    answer: 0,
-    explanation: "Bertanya terlebih dahulu membantu kita memastikan makanan yang dikonsumsi."
-  },
-  {
-    title: "Kasus 3: Menemukan Makanan Basi",
-    question: "Kamu menemukan makanan yang sudah berbau tidak sedap. Apa yang sebaiknya dilakukan?",
-    options: [
-      "Tetap memakannya",
-      "Memberikannya kepada teman",
-      "Tidak mengonsumsinya"
-    ],
-    answer: 2,
-    explanation: "Makanan yang sudah basi tidak baik bagi kesehatan dan sebaiknya tidak dikonsumsi."
-  }
-];
-
-let problemIndex = 0;
-let problemScore = 0;
-let problemAnswered = false;
 
 function loadProblem() {
   const item = problemData[problemIndex];
@@ -1264,12 +1107,14 @@ function answerProblem(selected) {
       "🌟 Jawaban tepat! " + item.explanation;
 
     createConfetti();
-
   } else {
     feedback.className = "feedback show wrong";
     feedback.innerHTML =
       "😊 Coba pikirkan kembali. " + item.explanation;
   }
+
+  document.getElementById("finalProblemScore").innerText =
+    problemScore;
 
   document.getElementById("nextProblemBtn").style.display =
     "inline-block";
@@ -1284,7 +1129,6 @@ function nextProblem() {
   if (problemIndex < problemData.length - 1) {
     problemIndex++;
     loadProblem();
-
   } else {
     document.getElementById("problemTitle").innerText =
       "🏆 Semua Kasus Selesai!";
@@ -1308,62 +1152,6 @@ function nextProblem() {
 }
 
 /* =========================
-   SUARA JAWABAN BENAR
-========================= */
-
-function playCorrectSound() {
-  try {
-    const AudioContextClass =
-      window.AudioContext || window.webkitAudioContext;
-
-    if (!AudioContextClass) return;
-
-    const audioContext = new AudioContextClass();
-
-    const notes = [
-      523.25,
-      659.25,
-      783.99,
-      1046.50
-    ];
-
-    notes.forEach((frequency, index) => {
-      const oscillator = audioContext.createOscillator();
-      const gain = audioContext.createGain();
-
-      const startAt =
-        audioContext.currentTime + index * 0.13;
-
-      oscillator.type = "sine";
-      oscillator.frequency.value = frequency;
-
-      gain.gain.setValueAtTime(0.0001, startAt);
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.16,
-        startAt + 0.025
-      );
-
-      gain.gain.exponentialRampToValueAtTime(
-        0.0001,
-        startAt + 0.28
-      );
-
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-
-      oscillator.start(startAt);
-      oscillator.stop(startAt + 0.3);
-    });
-
-    setTimeout(() => audioContext.close(), 800);
-
-  } catch (error) {
-    // Permainan tetap berjalan jika suara tidak didukung perangkat.
-  }
-}
-
-/* =========================
    ANIMASI CONFETTI
 ========================= */
 
@@ -1382,94 +1170,4 @@ function createConfetti() {
     confetti.className = "confetti";
 
     confetti.style.left =
-      Math.random() * 100 + "vw";
-
-    confetti.style.background =
-      colors[Math.floor(Math.random() * colors.length)];
-
-    confetti.style.animationDuration =
-      (1.5 + Math.random() * 2) + "s";
-
-    document.body.appendChild(confetti);
-
-    setTimeout(() => {
-      confetti.remove();
-    }, 4000);
-  }
-}
-
-/* =========================
-   NAVIGASI MENU
-   Hanya satu bagian tampil pada satu waktu.
-========================= */
-
-function showSection(sectionId) {
-  const selectedSection =
-    document.getElementById(sectionId);
-
-  if (!selectedSection) return;
-
-  document.querySelectorAll("body > section").forEach(section => {
-    section.style.display = "none";
-  });
-
-  selectedSection.style.display = "block";
-
-  selectedSection.scrollIntoView({
-    behavior: "smooth",
-    block: "start"
-  });
-
-  history.replaceState(null, "", "#" + sectionId);
-}
-
-/* =========================
-   MULAI WEBSITE
-========================= */
-
-function startWebsite() {
-  document.getElementById("startScreen").style.display = "none";
-  document.getElementById("mainNav").style.display = "flex";
-
-  showSection("beranda");
-}
-
-document.addEventListener("click", function(event) {
-  const link = event.target.closest('a[href^="#"]');
-
-  if (!link) return;
-
-  const sectionId =
-    link.getAttribute("href").slice(1);
-
-  const selectedSection =
-    document.getElementById(sectionId);
-
-  if (!selectedSection ||
-      selectedSection.tagName !== "SECTION") {
-    return;
-  }
-
-  event.preventDefault();
-  showSection(sectionId);
-});
-
-/* =========================
-   WEBSITE DIMULAI
-========================= */
-
-window.addEventListener("DOMContentLoaded", function() {
-  document.getElementById("startScreen").style.display = "flex";
-  document.getElementById("mainNav").style.display = "none";
-
-  document.querySelectorAll("body > section").forEach(section => {
-    section.style.display = "none";
-  });
-
-  loadQuiz();
-  loadProblem();
-});
-</script>
-
-</body>
-</html>
+      M
